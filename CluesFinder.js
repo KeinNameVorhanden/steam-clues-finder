@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Clues Finder
 // @namespace    CluesFinderSteam
-// @version      0.3
+// @version      0.4
 // @description  Will find the clues.
 // @author       KeinNameVorhanden
 // @match        https://store.steampowered.com/category/*/*
@@ -15,9 +15,16 @@ let once = false;
 
 function goto_clue() {
     if((window.location.href).includes("sale/clorthax_quest")) {
+        let page = document.getElementsByClassName("sale_page_background")[0].scrollHeight
+        window.scrollTo({
+            top: page,
+            left: 0,
+            behavior: 'smooth'
+        });
+
         setTimeout(function() {
             let buttons = document.getElementsByClassName("LinkButton")
-            if (buttons[1].text === "Don't Click Me" || buttons[1].text === "Nicht hier klicken") {
+            if (buttons[1].parentNode.className === "SummerSale2022_Double_Buttons") {
                 let button = document.getElementsByClassName("DialogButton _DialogLayout Secondary Focusable")[0].click()
                 setTimeout(function() {
                     buttons[1].click()
