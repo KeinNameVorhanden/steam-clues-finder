@@ -51,7 +51,7 @@ function find_game() {
             for(var j = 0; j < e.length; j++) {
                 if (e[j].textContent.includes("CL.0RTH.4X")) {
                     if(once == false) {
-                        //alert("Found the game")
+                        alert("Found the game")
                         once = true
                     }
                     e[j].scrollIntoView()
