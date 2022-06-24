@@ -14,7 +14,6 @@
 let once = false
 
 function goto_clue() {
-    console.log((window.location.href).includes("sale/clorthax_quest"))
     if((window.location.href).includes("sale/clorthax_quest")) {
         setTimeout(function() {
             let buttons = document.getElementsByClassName("LinkButton")
@@ -52,15 +51,15 @@ function find_game() {
             for(var j = 0; j < e.length; j++) {
                 if (e[j].textContent.includes("CL.0RTH.4X")) {
                     if(once == false) {
-                        //alert("Found the game")
+                        alert("Found the game")
                         once = true
                     }
                     e[j].scrollIntoView()
+                    e[j].style = "border: 10px solid red"
                     window.scrollBy(0, -300)
                     break
                 }
             }
-            console.log("Script just ran")
         }, 1200)
     }
 }
@@ -72,7 +71,6 @@ function find_game() {
 })()
 
 (function(history) {
-    //console.log("[Hide Progress] history");
     var pushState = history.pushState
     history.pushState = function(state) {
         if (typeof history.onpushstate == "function") {
